@@ -190,8 +190,8 @@
     "venue": "Coughlan's",
     "area": "Douglas St",
     "category": "Gospel / Soul",
-    "price": "Free Walk-in",
-    "description": "Spellbinding, gravelly vocals and roaring piano balladry evoking Tom Waits.",
+    "price": "Ticketed (€20)",
+    "description": "Spellbinding, gravelly vocals and roaring piano balladry in Coughlan's back room. Ticketed show (€20 via Coughlan's Live).",
     "mapUrl": "https://maps.google.com/?q=Coughlans+Bar+Douglas+St+Cork"
   },
   {
@@ -253,11 +253,11 @@
     "dayLabel": "Fri 23 Oct",
     "time": "9:00pm",
     "venue": "The Park",
-    "area": "Grand Parade",
+    "area": "South Main St",
     "category": "Hip-Hop / Funk Fusion",
     "price": "Free Walk-in",
     "description": "Groovy brass, clever rhymes, and energetic party rhythms right across from the park.",
-    "mapUrl": "https://maps.google.com/?q=The+Park+Grand+Parade+Cork"
+    "mapUrl": "https://maps.google.com/?q=The+Park+South+Main+St+Cork"
   },
   {
     "id": "fri-11",
@@ -732,7 +732,7 @@
     "title": "The Hollyz",
     "date": "2026-10-24",
     "dayLabel": "Sat 24 Oct",
-    "time": "9:00pm",
+    "time": "9:30pm",
     "venue": "Cantys",
     "area": "Pembroke St",
     "category": "Pop / Funk Party",
@@ -760,11 +760,11 @@
     "dayLabel": "Sat 24 Oct",
     "time": "9:00pm",
     "venue": "The Park",
-    "area": "Grand Parade",
+    "area": "South Main St",
     "category": "Hip Hop / Soul",
     "price": "Free Walk-in",
     "description": "Soulful vocals, live MPC beats, and conscious hip-hop.",
-    "mapUrl": "https://maps.google.com/?q=The+Park+Grand+Parade+Cork"
+    "mapUrl": "https://maps.google.com/?q=The+Park+South+Main+St+Cork"
   },
   {
     "id": "sat-29",
@@ -981,11 +981,11 @@
     "dayLabel": "Sun 25 Oct",
     "time": "2:00pm",
     "venue": "The Park",
-    "area": "Grand Parade",
+    "area": "South Main St",
     "category": "Acoustic Soul",
     "price": "Free Walk-in",
     "description": "Warm vocals and delicate jazz guitar balladry.",
-    "mapUrl": "https://maps.google.com/?q=The+Park+Grand+Parade+Cork"
+    "mapUrl": "https://maps.google.com/?q=The+Park+South+Main+St+Cork"
   },
   {
     "id": "sun-7",
@@ -1046,11 +1046,11 @@
     "dayLabel": "Sun 25 Oct",
     "time": "4:00pm",
     "venue": "The Park",
-    "area": "Grand Parade",
+    "area": "South Main St",
     "category": "Folk / Acoustic",
     "price": "Free Walk-in",
     "description": "Lyrical songwriting and intricate fingerpicking.",
-    "mapUrl": "https://maps.google.com/?q=The+Park+Grand+Parade+Cork"
+    "mapUrl": "https://maps.google.com/?q=The+Park+South+Main+St+Cork"
   },
   {
     "id": "sun-12",
@@ -1306,11 +1306,11 @@
     "dayLabel": "Sun 25 Oct",
     "time": "8:00pm",
     "venue": "The Park",
-    "area": "Grand Parade",
+    "area": "South Main St",
     "category": "Acoustic / Blues",
     "price": "Free Walk-in",
     "description": "Grit and soul on acoustic six-string.",
-    "mapUrl": "https://maps.google.com/?q=The+Park+Grand+Parade+Cork"
+    "mapUrl": "https://maps.google.com/?q=The+Park+South+Main+St+Cork"
   },
   {
     "id": "sun-32",
@@ -1356,7 +1356,7 @@
     "title": "The Hollyz",
     "date": "2026-10-25",
     "dayLabel": "Sun 25 Oct",
-    "time": "9:00pm",
+    "time": "9:30pm",
     "venue": "Crane Lane Theatre",
     "area": "Phoenix St",
     "category": "Pop / Funk Party",
