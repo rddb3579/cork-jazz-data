@@ -1,0 +1,56 @@
+# STREAMING_CHUNK:Configuring the GitHub Action workflow triggers and schedule...
+name: Daily Cork Jazz Freshness Check
+
+on:
+  # Runs daily at 08:00 UTC (09:00 IST Irish time)
+  schedule:
+    - cron: '0 8 * * *'
+  # Allows you to click "Run workflow" manually in the GitHub Actions tab anytime
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  check-freshness:
+    runs-on: ubuntu-latest
+
+    steps:
+      # STREAMING_CHUNK:Checking out repository code and initializing Python environment...
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests beautifulsoup4
+
+      # STREAMING_CHUNK:Executing festival schedule validation and freshness script...
+      - name: Run Schedule Freshness & Integrity Check
+        run: |
+          python scripts/freshness_check.py
+
+      # STREAMING_CHUNK:Committing and pushing updates if schedule changes are detected...
+      - name: Commit & Push Changes (if updated)
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          
+          # Stage events.json and the validation report
+          git add events.json schedule_status.json 2>/dev/null || true
+          
+          # Only commit if there are actual diffs detected
+          if git diff --staged --quiet; then
+            echo "No schedule changes or timing updates detected today."
+          else
+            git commit -m "chore(schedule): automated daily lineup & freshness sync [skip ci]"
+            git push
+            echo "Schedule updates successfully committed and pushed to main branch!"
+          fi
