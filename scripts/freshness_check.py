@@ -2,19 +2,16 @@ import json
 import os
 import sys
 from datetime import datetime, timezone
-import urllib.request
-import urllib.error
 
-EVENTS_FILE = "events.json"
-REPORT_FILE = "schedule_status.json"
+# Locate repository root (whether script runs from scripts/ or from root)
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+if os.path.basename(SCRIPT_DIR) == "scripts":
+    REPO_ROOT = os.path.abspath(os.path.join(SCRIPT_DIR, ".."))
+else:
+    REPO_ROOT = SCRIPT_DIR
 
-USER_AGENT = "CorkJazzConciergeBot/1.0 (+https://corkjazz2026.netlify.app)"
-
-# Verified official sources to cross-check
-SOURCES = [
-    "https://www.peoplesrepublicofcork.com/eventguide/",
-    "https://www.coughlans.ie/whats-on"
-]
+EVENTS_FILE = os.path.join(REPO_ROOT, "events.json")
+REPORT_FILE = os.path.join(REPO_ROOT, "schedule_status.json")
 
 def load_existing_events(filepath):
     """Loads existing events.json safely."""
@@ -29,7 +26,7 @@ def load_existing_events(filepath):
         sys.exit(1)
 
 def validate_event_record(event, index):
-    """Ensures each event has required fields, valid dates, and working map links."""
+    """Ensures each event has required fields and valid dates within the festival window."""
     errors = []
     required_keys = ["id", "title", "date", "dayLabel", "time", "venue", "area", "category"]
     
