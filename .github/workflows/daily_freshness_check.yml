@@ -25,17 +25,16 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-          cache: 'pip'
 
-      - name: Install Dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install requests beautifulsoup4
 
       # STREAMING_CHUNK:Executing festival schedule validation and freshness script...
       - name: Run Schedule Freshness & Integrity Check
         run: |
-          python scripts/freshness_check.py
+          if [ -f "scripts/freshness_check.py" ]; then
+            python scripts/freshness_check.py
+          else
+            python freshness_check.py
+          fi
 
       # STREAMING_CHUNK:Committing and pushing updates if schedule changes are detected...
       - name: Commit & Push Changes (if updated)
@@ -43,13 +42,11 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           
-          # Stage events.json and the validation report
-          git add events.json schedule_status.json 2>/dev/null || true
-          
-          # Only commit if there are actual diffs detected
-          if git diff --staged --quiet; then
+          # Only commit if events.json has actual diffs
+          if git diff --quiet events.json; then
             echo "No schedule changes or timing updates detected today."
           else
+            git add events.json schedule_status.json
             git commit -m "chore(schedule): automated daily lineup & freshness sync [skip ci]"
             git push
             echo "Schedule updates successfully committed and pushed to main branch!"
